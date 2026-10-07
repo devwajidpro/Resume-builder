@@ -6,6 +6,7 @@ import PersonalInfoForm from '../components/PersonalInfoForm'
 import ResumePreview from '../components/ResumePreview'
 import TemplateSelector from '../components/TemplateSelector'
 import ColorPicker from '../components/ColorPicker'
+import PersonalSummaryForm from '../components/PersonalSummaryForm'
 
 const ResumeBuilder = () => {
   const {resumeId} = useParams() 
@@ -20,7 +21,7 @@ const ResumeBuilder = () => {
     project: [],
     skills: [],
     template: "classic",
-    accent_color: "",
+    accent_color: "#14B8A6",
     public: false
   })
 
@@ -111,6 +112,16 @@ const ResumeBuilder = () => {
                       onChange={(data) => setResumeData(prev => ({...prev, personal_info: data}))}
                       removeBackground={removeBackground}
                       setRemoveBackground={setRemoveBackground}/>
+                    </div>
+                  )}
+
+                  {activeSection.id === 'summary' && (
+                    <div>
+                      <PersonalSummaryForm 
+                      data={resumeData.professional_summary}
+                      onChange={(data) => setResumeData(prev => ({...prev, personal_info: data}))}
+                      setResumeData={setResumeData}
+                      />
                     </div>
                   )}
               </div>
