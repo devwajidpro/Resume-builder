@@ -1,12 +1,17 @@
-const express = require("express");
-const cors = require("cors");
 
-require("dotenv").config();
+import express from "express";
+import cors from "cors";
+import connectDB from "./configs/db.js"
+import 'dotenv/config'
 
 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+
+await connectDB();
+
 
 app.use(express.json());
 app.use(cors());
