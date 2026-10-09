@@ -3,6 +3,7 @@
 import userModel from "../models/User.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import resumeModel from "../models/Resume.js";
 
 
 const generateToken = (userId) => {
@@ -118,7 +119,7 @@ export const loginUser = async (req, res) => {
 
 
 // controller for getting user by Id
-// POST: /api/users/data
+// GET: /api/users/data
 
 
 export const getUserById = async (req, res) => {
@@ -148,4 +149,27 @@ export const getUserById = async (req, res) => {
         })
     }
     
+}
+
+
+// controller for getting user resumes 
+// GET: /api/users/resumes
+
+export const getUserResumes = async (req, res) => {
+    try {
+        
+        const userId = req.userId;
+
+        const resumes = await resumeModel.find({userId});
+
+        return res.status(200).json({
+            resumes
+        })
+
+
+    } catch (error) {
+        return res.status(400).json({
+            message: error.message
+        })
+    }
 }
