@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import connectDB from "./configs/db.js"
 import 'dotenv/config'
+import authRoutes from './routes/user.routes.js'
 
 
 
@@ -17,8 +18,7 @@ app.use(express.json());
 app.use(cors());
 
 
-
-app.get("/", (req, res) => res.send("Server is live..."))
+app.use("/api/users", authRoutes)
 
 
 

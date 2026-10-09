@@ -1,6 +1,6 @@
 
 
-import userModel from "../models/User";
+import userModel from "../models/User.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
@@ -29,12 +29,10 @@ export const registerUser = async (req, res) => {
 
         // check if user already exist
 
-        const user = userModel.findOne({
-            email
-        })
+        const user = await userModel.findOne({email})
 
         if (user) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: "User already exists"
             })
         }
@@ -55,7 +53,7 @@ export const registerUser = async (req, res) => {
         newUser.password = undefined;
 
 
-        res.status(201).json({
+        return res.status(201).json({
             message: "New user created successfully.",
             token,
             user: newUser
@@ -82,12 +80,12 @@ export const loginUser = async (req, res) => {
 
         // check if user exist
 
-        const user = userModel.findOne({
+        const user = await userModel.findOne({
             email
         })
 
         if (!user) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: "Invalid email or password"
             })
         }
@@ -96,7 +94,7 @@ export const loginUser = async (req, res) => {
         // check if password is correct
 
         if (!user.comparePassword(password)) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: "Invalid email or password"
             })
         }
@@ -105,7 +103,7 @@ export const loginUser = async (req, res) => {
         user.password = undefined;
 
 
-        res.status(200).json({
+        return res.status(200).json({
             message: "User login successfully.",
             token,
             user
@@ -141,7 +139,7 @@ export const getUserById = async (req, res) => {
 
         user.password = undefined;
 
-        res.status(200).json({
+        return res.status(200).json({
             user
         })
     } catch (error) {
