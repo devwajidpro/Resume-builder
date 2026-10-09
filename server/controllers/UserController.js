@@ -52,7 +52,6 @@ export const registerUser = async (req, res) => {
         })
 
         const token = generateToken(newUser._id);
-        res.cookies(token)
         newUser.password = undefined;
 
 
@@ -60,6 +59,56 @@ export const registerUser = async (req, res) => {
             message: "New user created successfully.",
             token,
             user: newUser
+        })
+    } catch (error) {
+        return res.status(400).json({
+            message: error.message
+        })
+    }
+    
+}
+
+
+
+// controller for user login
+// POST: /api/users/login
+
+
+export const loginUser = async (req, res) => {
+
+    try {
+        
+        const {email, password} = req.body;
+
+        // check if user exist
+
+        const user = userModel.findOne({
+            email
+        })
+
+        if (!user) {
+            res.status(400).json({
+                message: "Invalid email or password"
+            })
+        }
+
+
+        // check if password is correct
+
+        if (!user.comparePassword(password)) {
+            res.status(400).json({
+                message: "Invalid email or password"
+            })
+        }
+
+        const token = generateToken(user._id);
+        user.password = undefined;
+
+
+        res.status(200).json({
+            message: "User login successfully.",
+            token,
+            user
         })
     } catch (error) {
         return res.status(400).json({
