@@ -117,3 +117,37 @@ export const loginUser = async (req, res) => {
     }
     
 }
+
+
+// controller for getting user by Id
+// POST: /api/users/data
+
+
+export const getUserById = async (req, res) => {
+
+    try {
+        
+        const userId = req.userId;
+
+        // check if user exists
+        const user = await findById(userId)
+
+        if(!user) {
+          return res.status(404).json({
+            message: "User not found"
+        })  
+        }
+
+
+        user.password = undefined;
+
+        res.status(200).json({
+            user
+        })
+    } catch (error) {
+        return res.status(400).json({
+            message: error.message
+        })
+    }
+    
+}
