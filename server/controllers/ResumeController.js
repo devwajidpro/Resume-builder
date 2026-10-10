@@ -1,6 +1,6 @@
 
-import imagekit from "../configs/imageKit";
-import resumeModel from "../models/Resume";
+import imagekit from "../configs/imageKit.js";
+import resumeModel from "../models/Resume.js";
 import fs from 'fs'
 
 
@@ -38,7 +38,7 @@ export const createResume = async (req, res) => {
 
 
 // controller for delete resume
-// POST: /api/resumes/delete
+// DELETE: /api/resumes/delete
 
 export const deleteResume = async (req, res) => {
     try {
