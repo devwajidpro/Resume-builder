@@ -21,7 +21,7 @@ const connectDB = async () => {
             mongodbURI = mongodbURI.slice(0, -1)
         }
 
-        mongoose.connect(`${mongodbURI}/${projectName}`)
+        await mongoose.connect(`${mongodbURI}/${projectName}`)
 
 
     } catch (error) {
