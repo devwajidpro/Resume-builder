@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {FilePenLineIcon, PencilIcon, PlusIcon, TrashIcon, UploadCloud, UploadCloudIcon, XIcon} from 'lucide-react'
+import {FilePenLineIcon, LoaderCircleIcon, PencilIcon, PlusIcon, TrashIcon, UploadCloud, UploadCloudIcon, XIcon} from 'lucide-react'
 import { dummyResumeData } from "../assets/assets"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -213,7 +213,10 @@ const Dashboard = () => {
                 />
               </div>
 
-              <button className='w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors'>Upload Resume</button>
+              <button className='w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors'>
+                {isLoading && <LoaderCircleIcon className='animate-spin size-4 text-white'/>}
+                {isLoading ? 'Uploading...' : 'Upload Resume'}
+                </button>
 
               <XIcon className='absolute top-4 right-4  text-slate-400 hover:text-slate-600 cursor-pointer transition-colors' onClick={() => {
                 setShowUploadResume(false);
