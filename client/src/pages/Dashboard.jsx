@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {FilePenLineIcon, PencilIcon, PlusIcon, TrashIcon, UploadCloud, UploadCloudIcon, XIcon} from 'lucide-react'
 import { dummyResumeData } from "../assets/assets"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
 import api from '../configs/api'
+import pdfToText from 'react-pdftotext'
 
 const Dashboard = () => {
 
@@ -21,6 +22,8 @@ const Dashboard = () => {
   const [title, setTitle] = React.useState('')
   const [resume, setResume] = React.useState(null)
   const [editResumeId, setEditResumeId] = React.useState('')
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const loadAllResumes = async () => {
     setAllResumes(dummyResumeData)
@@ -42,9 +45,25 @@ const Dashboard = () => {
   }
 
   const uploadResume = async (e) => {
+
     e.preventDefault();
+    setIsLoading(true);
+
+  try {
+
+    const resumeText = await pdfToText(resume)
+
+    const {data} = await api.post("/api/ai/upload-resume", {title, resumeText}, {headers: {Authorization: token}});
+    console.log("Uploaded Resume:", data);
+    setAllResumes([...allResumes, data.resume]);
+    setTitle('');
+    setResume(null)
     setShowUploadResume(false);
-    navigate(`/app/builder/res124`)
+    navigate(`/app/builder/${data.resumeId}`)
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error.message)
+  }
+  setIsLoading(false);
   }
 
 
