@@ -26,7 +26,13 @@ const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const loadAllResumes = async () => {
-    setAllResumes(dummyResumeData)
+    try {
+      const {data} = await api.get("/api/users/resumes", {headers: {Authorization: token}});
+
+      setAllResumes(data.resumes)
+    } catch (error) {
+        toast.error(error?.response?.data?.message || error.message)
+    }
   }
 
   const createResume = async (e) => {
