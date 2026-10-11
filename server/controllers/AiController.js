@@ -38,6 +38,11 @@ export const enhanceProfessionalSummary = async (req, res) => {
         })
         
     } catch (error) {
+        if (error.status === 429 || error.response?.status === 429) {
+            return res.status(429).json({
+                message: "AI quota exceeded. Please try again later."
+            });
+        }
         return res.status(400).json({
             message: error.message
         })
@@ -82,6 +87,11 @@ export const enhanceJobDescription = async (req, res) => {
         })
         
     } catch (error) {
+        if (error.status === 429 || error.response?.status === 429) {
+            return res.status(429).json({
+                message: "AI quota exceeded. Please try again later."
+            });
+        }
         return res.status(400).json({
             message: error.message
         })
@@ -236,6 +246,11 @@ export const uploadResume = async (req, res) => {
         res.json({resumeId: newResume._id})
         
     } catch (error) {
+        if (error.status === 429 || error.response?.status === 429) {
+            return res.status(429).json({
+                message: "AI quota exceeded. Please try again later."
+            });
+        }
         return res.status(400).json({
             message: error.message
         })
