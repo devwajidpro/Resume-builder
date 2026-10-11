@@ -129,7 +129,7 @@ export const getUserById = async (req, res) => {
         const userId = req.userId;
 
         // check if user exists
-        const user = await findById(userId)
+        const user = await userModel.findById(userId)
 
         if(!user) {
           return res.status(404).json({
