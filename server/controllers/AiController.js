@@ -131,7 +131,7 @@ export const uploadResume = async (req, res) => {
             type: String
         }],
 
-        professional_info: {
+        personal_info: {
             image: {
                 type: String,
                 default: ''
