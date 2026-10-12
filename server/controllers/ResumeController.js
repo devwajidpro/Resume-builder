@@ -144,8 +144,10 @@ export const updateResume = async (req, res) => {
         const userId = req.userId;
         const {resumeId, resumeData, removeBackground} = req.body;
         const image = req.file;
-
-        let resumeDataCopy = JSON.parse(JSON.stringify(resumeData))
+        const resumeDataCopy =
+            typeof resumeData === "string"
+                ? JSON.parse(resumeData)
+                : JSON.parse(JSON.stringify(resumeData));
 
 
         if(image) {
@@ -156,7 +158,7 @@ export const updateResume = async (req, res) => {
                 fileName: 'resume.jpg',
                 folder: "user-resumes",
                 transformation: {
-                    pre: 'w-300,h-300,fo-face,z-0.75' + (removeBackground ? ",e-bgremove" : "")
+                    pre: 'w-300,h-300,fo-face,z-0.65' + (removeBackground ? ",e-bgremove" : "")
                 }
             });
 
@@ -165,7 +167,11 @@ export const updateResume = async (req, res) => {
         }
 
 
-        const resume = await resumeModel.findByIdAndUpdate({userId, _id: resumeId}, resumeDataCopy, {new: true})
+        const resume = await resumeModel.findOneAndUpdate(
+            { userId, _id: resumeId },
+            { $set: resumeDataCopy },
+            { new: true, runValidators: true }
+        );
     
 
 
