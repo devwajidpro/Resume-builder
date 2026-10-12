@@ -165,7 +165,8 @@ export const updateResume = async (req, res) => {
         }
 
 
-        const resume = await resumeModel.findOneAndUpdate({userId, _id: resumeId}, resumeDataCopy, {new: true})
+        const resume = await resumeModel.findByIdAndUpdate({userId, _id: resumeId}, resumeDataCopy, {new: true})
+    
 
 
         return res.status(200).json({
