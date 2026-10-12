@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {FilePenLineIcon, LoaderCircleIcon, PencilIcon, PlusIcon, TrashIcon, UploadCloud, UploadCloudIcon, XIcon} from 'lucide-react'
-import { dummyResumeData } from "../assets/assets"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
