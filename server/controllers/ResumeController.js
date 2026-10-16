@@ -155,7 +155,7 @@ export const updateResume = async (req, res) => {
 
             const response = await imagekit.files.upload({
                 file: imageBufferData,
-                fileName: 'resume.jpg',
+                fileName: 'resume.png',
                 folder: "user-resumes",
                 transformation: {
                     pre: 'w-300,h-300,fo-face,z-0.65' + (removeBackground ? ",e-bgremove" : "")
