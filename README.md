@@ -5,7 +5,7 @@ An AI powered Resume Builder built with the **MERN Stack** that helps users crea
 
 ## 🌐 Live Demo
 
-🚀 **Live Website:** [AI Resume Builder](https://resume-builder-eight-topaz-53.vercel.app)
+🚀 **Live Website:** https://resume-builder-eight-topaz-53.vercel.app
 
 Explore the application to create professional resumes, enhance content with AI, customize templates, download resumes as PDFs, and share them online.
 
