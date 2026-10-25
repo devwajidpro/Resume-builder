@@ -189,7 +189,7 @@ This project demonstrates practical experience in full stack web development, RE
 
 **Wajid Ali**
 
-Aspiring Full Stack AI Engineer passionate about building modern web applications and AI powered solutions.
+Aspiring Full Stack Developer passionate about building modern web applications and AI powered solutions.
 
 - GitHub: [@devwajidpro](https://github.com/devwajidpro)
 - LinkedIn: [Wajid Ali](https://www.linkedin.com/in/devwajidpro)
