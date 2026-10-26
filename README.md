@@ -179,7 +179,7 @@ This project demonstrates practical experience in full stack web development, RE
 ## 🔮 Future Improvements
 
 - More professional resume templates
-- AI powered resume feedback
+- AI powered resume
 - ATS compatibility analysis
 - Resume scoring and improvement suggestions
 - Custom font and layout options
