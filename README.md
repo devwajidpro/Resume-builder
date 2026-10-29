@@ -1,6 +1,6 @@
 ﻿# 🤖 AI Resume Builder
 
-An AI powered Resume Builder built with the **MERN Stack** that helps users create, customize, and manage professional resumes with ease. Users can enter their information manually, edit existing resumes, enhance professional summaries and job descriptions using AI, choose different templates, and share their resumes through a public link.
+An AI powered Resume Builder built with the **MERN Stack** that helps users and professionals to create, customize, and manage professional resumes with ease. Users can enter their information manually, edit existing resumes, enhance professional summaries and job descriptions using AI, choose different templates, and share their resumes through a public link.
 
 
 ## 🌐 Live Demo
