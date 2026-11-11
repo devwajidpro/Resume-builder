@@ -96,17 +96,27 @@ Technologies and tools used to build this application.
 
 ---
 
-## 📸 Application Preview
+## 📸 Application Screenshots
 
-Add your actual application screenshots here to help visitors understand the interface and functionality.
-
-<!-- Replace these paths with actual screenshot URLs or repository image paths. -->
-
-<!--
+### 🏠 Landing Page
 <p align="center">
-  <img src="screenshots/dashboard.png" alt="AI Resume Builder Dashboard" width="800"/>
+  <img src="screenshots/HeroSection.png" alt="AI Resume Builder Landing Page" width="850"/>
 </p>
--->
+
+### 📊 Dashboard
+<p align="center">
+  <img src="screenshots/dashboards.png" alt="AI Resume Builder User Dashboard" width="850"/>
+</p>
+
+### ✏️ Resume Editor
+<p align="center">
+  <img src="screenshots/editor.png" alt="AI Resume Builder Resume Editor" width="850"/>
+</p>
+
+### 📄 Resume Preview
+<p align="center">
+  <img src="screenshots/resumepreview.png" alt="AI Resume Builder Professional Resume Preview" width="850"/>
+</p>
 
 ---
 
